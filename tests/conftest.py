@@ -36,8 +36,7 @@ def dog_base_url():
 
 @pytest.fixture(scope="module")
 def dog_breeds(dog_base_url):
-    sublink = 'breeds/list/all'
-    result = requests.get(dog_base_url + sublink)
+    result = requests.get(dog_base_url + 'breeds/list/all')
     if result.status_code == 200:
         breeds = json.loads(result.content)
         breeds = breeds['message']
@@ -54,7 +53,7 @@ def dog_sub_breeds(dog_breeds):
         yield with_sub_breeds
         del with_sub_breeds
     else:
-        print('Список пород с подпородами создать не удалось.')
+        yield None
 
 
 """Фикстуры для тестирования API сайта openbreweries"""
