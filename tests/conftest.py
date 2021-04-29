@@ -18,12 +18,12 @@ def pytest_addoption(parser):
 
 @pytest.fixture
 def url_for_testing(request):
-    return request.config.getoption("url")
+    return request.config.getoption("--url")
 
 
 @pytest.fixture
 def status_code_for_testing(request):
-    return int(request.config.getoption("status_code"))
+    return int(request.config.getoption("--status_code"))
 
 
 """Фикстуры для тестирования API сайта dog.ceo"""
