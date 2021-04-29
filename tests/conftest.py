@@ -67,8 +67,7 @@ def brew_base_url():
 @pytest.fixture(scope="module")
 def base_brews_list(brew_base_url):
     link = brew_base_url + 'breweries?per_page=50'
-    result = requests.get(link).content
-    breweries_list = json.loads(result)
+    breweries_list = requests.get(link).json
     return breweries_list
 
 
@@ -83,6 +82,5 @@ def json_base_url():
 @pytest.fixture(scope="module")
 def posts_list(json_base_url):
     link = json_base_url + 'posts'
-    result = requests.get(link).content
-    posts = json.loads(result)
+    posts = requests.get(link).json
     return posts
