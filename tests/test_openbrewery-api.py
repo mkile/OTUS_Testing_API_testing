@@ -32,7 +32,6 @@ def test_get_results_by_name(brew_base_url, base_brews_list, brew):
     link = brew_base_url + 'breweries?by_name=' + base_brews_list[brew]['name']
     result = requests.get(link)
     json_data = json.loads(result.content)
-    print(json_data[0]['name'], ' = ', base_brews_list[brew]['name'])
     assert (json_data[0]['name'] == base_brews_list[brew]['name']) & (result.status_code == 200)
 
 
@@ -41,6 +40,4 @@ def test_get_results_by_city(brew_base_url, base_brews_list, brew):
     link = brew_base_url + 'breweries?by_city=' + base_brews_list[brew]['city']
     result = requests.get(link)
     json_data = json.loads(result.content)
-    print('Number=', brew, json_data[0]['city'], ' = ',
-          base_brews_list[brew]['city'], 'got N=', len(json_data))
     assert (len(json_data) > 0) & (result.status_code == 200)
