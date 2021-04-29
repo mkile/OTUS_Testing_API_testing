@@ -25,7 +25,6 @@ def test_get_random_image(dog_base_url):
 def test_get_random_image(dog_base_url, dog_breeds, breed_num):
     sublink = "/images"
     link = dog_base_url + 'breed/' + list(dog_breeds.keys())[breed_num] + sublink
-    print(link)
     assert requests.get(link).status_code == 200, link
 
 
@@ -41,7 +40,6 @@ def test_get_list_subbreed(dog_base_url, dog_sub_breeds, breed_num, sub_breed_nu
                                                                                   dog_breeds_list[breed_num],
                                                                                   sub_breed_num + 1))
     subbreeds = json.loads(requests.get(link).content)['message']
-    print(link)
     assert (dog_sub_breeds_list[sub_breed_num] in list(subbreeds)) is True
 
 
